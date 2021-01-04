@@ -2,4 +2,8 @@
     <string name="app_name">Thingamajig</string>
     <string name="welcome">Welcome to Thingamajig!</string>
     <string name="lorem">lorem ipsum blah blah blah blah blah blah blah blah. lorem ipsum blah blah blah blah blah blah blah blah.</string>
+    <string name="title_home">Home</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_search">Search</string>
+    <string name="title_friends">Friends</string>
 </resources>
