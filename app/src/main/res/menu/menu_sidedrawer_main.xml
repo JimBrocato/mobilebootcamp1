@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/home"
-        android:title="@string/title_home" />
-    <item
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/search"
-        android:title="@string/title_search" />
-    <item
-        android:id="@+id/friendsFragment"
-        android:icon="@drawable/friends"
-        android:title="Friends" />
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single"
+        android:menuCategory="container">
+
+        <item
+            android:id="@+id/accountFragment"
+            android:title="My Account" />
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:title="Settings" />
+
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none"
+        android:menuCategory="container">
+
+        <item
+            android:id="@+id/feedbackFragment"
+            android:title="Feedback" />
+
+        <item
+            android:id="@+id/customerServiceFragment"
+            android:title="Call Customer Service" />
+
+        <item
+            android:id="@+id/defectReportFragment"
+            android:title="Submit Defect Report" />
+
+    </group>
+
 </menu>

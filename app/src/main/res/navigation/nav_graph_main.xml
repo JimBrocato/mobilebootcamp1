@@ -19,6 +19,21 @@
         <action
             android:id="@+id/action_homeFragment_to_friendsFragment"
             app:destination="@id/friendsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customerServiceFragment"
+            app:destination="@id/customerServiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_defectReportFragment"
+            app:destination="@id/defectReportFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_feedbackFragment"
+            app:destination="@id/feedbackFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/friendsFragment"
@@ -53,4 +68,29 @@
         android:name="com.wcg.mobilebootcamp1_jim.ProductDetailFragment"
         android:label="Product Detail"
         tools:layout="@layout/fragment_product_detail" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.wcg.mobilebootcamp1_jim.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/customerServiceFragment"
+        android:name="com.wcg.mobilebootcamp1_jim.CustomerServiceFragment"
+        android:label="fragment_customer_service"
+        tools:layout="@layout/fragment_customer_service" />
+    <fragment
+        android:id="@+id/defectReportFragment"
+        android:name="com.wcg.mobilebootcamp1_jim.DefectReportFragment"
+        android:label="fragment_defect_report"
+        tools:layout="@layout/fragment_defect_report" />
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.wcg.mobilebootcamp1_jim.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.wcg.mobilebootcamp1_jim.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
