@@ -32,11 +32,11 @@ class ProductRecyclerViewAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.titleView.text = item.title
-        holder.priceView.text = item.price.toString()
+        holder.priceView.text = "$" + item.price.toString()
         holder.categoryView.text = item.category
         holder.imageView.setImageURI(Uri.parse(item.image))
-        //holder.imageView.setImage
         Picasso.get().load(item.image).into(holder.imageView)
+        holder.descriptionView.text = item.description
     }
 
     override fun getItemCount(): Int = values.size
@@ -46,6 +46,7 @@ class ProductRecyclerViewAdapter (
         val priceView: TextView = view.findViewById(R.id.tvPrice)
         val categoryView: TextView = view.findViewById(R.id.tvCategory)
         val imageView: ImageView = view.findViewById(R.id.imgProductDetailImage)
+        val descriptionView: TextView = view.findViewById(R.id.tvDescription)
 
         override fun toString(): String {
             return super.toString() + " '" + titleView.text + "'"
