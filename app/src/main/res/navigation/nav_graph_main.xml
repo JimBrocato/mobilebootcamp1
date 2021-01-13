@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_shopFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
@@ -67,7 +70,11 @@
         android:id="@+id/productDetailFragment"
         android:name="com.wcg.mobilebootcamp1_jim.ProductDetailFragment"
         android:label="Product Detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.wcg.mobilebootcamp1_jim.AccountFragment"

@@ -34,6 +34,20 @@ class ProductRepository @Inject constructor(
         return data
     }
 
+    fun getProduct(id: Int) : LiveData<Product> {
+        val product = MutableLiveData<Product>()
+        storeWebService.getProduct(id).enqueue(object : Callback<Product> {
+            override fun onResponse(call: Call<Product>, response: Response<Product>) {
+                product.value = response.body()
+            }
+
+            override fun onFailure(call: Call<Product>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+        return product
+    }
+
 
 
 

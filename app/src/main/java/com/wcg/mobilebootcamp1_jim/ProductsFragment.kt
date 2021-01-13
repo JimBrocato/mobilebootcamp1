@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateViewModelFactory
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,12 +56,23 @@ class ProductsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_products, container, false)
 
         viewModelAdapter = ProductRecyclerViewAdapter()
+        //(viewModelAdapter as ProductRecyclerViewAdapter).mainView = view
+        (viewModelAdapter as ProductRecyclerViewAdapter).onItemClick = { id -> navigateToProductDetail(id) }
+
         view.findViewById<RecyclerView>(R.id.list).apply {
             adapter = viewModelAdapter
         }
 
         return view
     }
+
+    fun navigateToProductDetail(id: Int) {
+        Log.i("navigate:", id.toString())
+        //val productItem = viewModelAdapter?.values?.get(id) // TODO
+        var action = ShopFragmentDirections.actionShopFragmentToProductDetailFragment(id)
+        findNavController().navigate(action)
+    }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

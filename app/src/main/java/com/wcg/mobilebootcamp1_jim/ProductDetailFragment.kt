@@ -1,31 +1,40 @@
 package com.wcg.mobilebootcamp1_jim
 
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.squareup.picasso.Picasso
+import com.wcg.mobilebootcamp1_jim.viewmodels.Product
+import com.wcg.mobilebootcamp1_jim.viewmodels.ProductViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
+private const val ARG_PARAM_PRODUCT_ID = "productId"
+
 
 /**
  * A simple [Fragment] subclass.
  * Use the [ProductDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class ProductDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var productId: Int = 0  //  no bueno
+    private val viewModel: ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            productId = it.getInt(ARG_PARAM_PRODUCT_ID)
         }
     }
 
@@ -37,22 +46,30 @@ class ProductDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_product_detail, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getProduct(productId).observe(viewLifecycleOwner, Observer<Product> { item ->
+            view.findViewById<TextView>(R.id.tvTitle).text = item.title
+            view.findViewById<TextView>(R.id.tvCategory).text = item.category
+            view.findViewById<TextView>(R.id.tvPrice).text = "$" + item.price.toString()
+            view.findViewById<TextView>(R.id.tvDescription).text = item.description
+            val imageView: ImageView = view.findViewById(R.id.imgProductDetailImage)
+            Picasso.get().load(item.image).into(imageView)
+        })
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
          * @return A new instance of fragment ProductDetailFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(productId: Int) =
             ProductDetailFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_PARAM_PRODUCT_ID, productId)
                 }
             }
     }
